@@ -1,10 +1,17 @@
 .header {
   display: flex;
-  align-content: center;
+  justify-content: space-between;
   align-items: center;
-  vert-align: middle;
-  img {
-    width: 100px;
-    height: 100px;
+  border: #cccccc solid 2px;
+  padding: 1em;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    img {
+      width: 30px;
+      height: 30px;
+    }
   }
+
 }

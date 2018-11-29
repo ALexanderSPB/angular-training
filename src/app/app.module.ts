@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeadlineComponent } from './headline/headline.component';
 import { CourseListComponent } from './course-list/course-list.component';
 import { CourseItemComponent } from './course-item/course-item.component';
+import { SearchCoursesComponent } from './search-courses/search-courses.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CourseItemComponent } from './course-item/course-item.component';
     FooterComponent,
     HeadlineComponent,
     CourseListComponent,
-    CourseItemComponent
+    CourseItemComponent,
+    SearchCoursesComponent
   ],
   imports: [
     BrowserModule,

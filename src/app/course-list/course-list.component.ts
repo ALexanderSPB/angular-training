@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Course} from '../course.model';
 
 @Component({
   selector: 'app-course-list',
@@ -6,8 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
-
-  constructor() { }
+  courseList: Course[] = [];
+  constructor() {
+    for (let i = 1; i < 6; i++) {
+      this.courseList.push({
+        id: i,
+        title: `title${i}`,
+        date: new Date(),
+        duration: 100 + i,
+        description: `Course description ${i}`
+      })
+    }
+  }
 
   ngOnInit() {
   }
