@@ -3,8 +3,10 @@
     <input
       type="text"
       placeholder="Name, fragment or date"
+      [(ngModel)]="query"
     >
-    <button>Search</button>
+    <button (click)="onFindClick()">Search</button>
+    {{query}}
   </div>
   <button>Add Course</button>
 </div>

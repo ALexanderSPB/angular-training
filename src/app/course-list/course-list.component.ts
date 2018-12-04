@@ -8,6 +8,9 @@ import { Course } from '../course.model';
 })
 export class CourseListComponent implements OnInit {
   courseList: Course[] = [];
+  onLoadMoreClick() {
+    console.log('load more');
+  };
   constructor() {
     for (let i = 1; i < 6; i++) {
       this.courseList.push({

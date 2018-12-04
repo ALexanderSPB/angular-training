@@ -9,6 +9,7 @@ import { HeadlineComponent } from './headline/headline.component';
 import { CourseListComponent } from './course-list/course-list.component';
 import { CourseItemComponent } from './course-item/course-item.component';
 import { SearchCoursesComponent } from './search-courses/search-courses.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchCoursesComponent } from './search-courses/search-courses.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

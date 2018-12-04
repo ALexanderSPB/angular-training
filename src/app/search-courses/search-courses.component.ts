@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-courses.component.scss']
 })
 export class SearchCoursesComponent implements OnInit {
+  onFindClick() {
+    console.log('find')
+  }
 
   constructor() { }
 
