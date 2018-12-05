@@ -3,10 +3,12 @@
     {{course.title}}
     {{course.duration}}
     {{course.date}}
-    {{course.description}}
+    <p>
+      {{course.description}}
+    </p>
   </div>
   <div class="controls">
     <button>Edit</button>
-    <button>Delete</button>
+    <button (click)="onDeleteClick.emit()">Delete</button>
   </div>
 </div>
