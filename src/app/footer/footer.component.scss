@@ -1,5 +1,9 @@
 .footer {
+  position: sticky;
+  bottom: 0;
   border: #cccccc solid 2px;
-  border-top: none;
   padding: 1em;
+  background: #ffffff;
+  height: 50px;
+  margin-top: -50px;
 }

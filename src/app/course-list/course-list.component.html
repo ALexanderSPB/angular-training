@@ -1,7 +1,11 @@
 <div class="courseList">
   <app-search-courses></app-search-courses>
-  <app-course-item *ngFor="let course of courseList" [course]="course"></app-course-item>
-  <button class="load-btn">
+  <app-course-item
+    *ngFor="let course of courseList; let index = index"
+    [course]="course"
+    (onDeleteClick)="deleteCourse(course.id, index)"
+  ></app-course-item>
+  <button class="load-btn" (click)="onLoadMoreClick()">
     Load more
   </button>
 </div>

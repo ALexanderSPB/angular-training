@@ -1,3 +1,14 @@
 <div class="course">
-  Video Course {{course.id}}
+  <div class="info">
+    {{course.title}}
+    {{course.duration}}
+    {{course.date}}
+    <p>
+      {{course.description}}
+    </p>
+  </div>
+  <div class="controls">
+    <button>Edit</button>
+    <button (click)="onDeleteClick.emit()">Delete</button>
+  </div>
 </div>

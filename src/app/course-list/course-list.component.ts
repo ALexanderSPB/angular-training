@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, DoCheck, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import { Course } from '../course.model';
 
 @Component({
@@ -6,10 +6,17 @@ import { Course } from '../course.model';
   templateUrl: './course-list.component.html',
   styleUrls: ['./course-list.component.scss']
 })
-export class CourseListComponent implements OnInit {
+export class CourseListComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
   courseList: Course[] = [];
+  onLoadMoreClick() {
+    console.log('load more');
+  };
   constructor() {
-    for (let i = 1; i < 6; i++) {
+  }
+
+  ngOnInit() {
+    console.log('ngOnInit');
+    for (let i = 0; i < 6; i++) {
       this.courseList.push({
         id: i,
         title: `title${i}`,
@@ -20,7 +27,20 @@ export class CourseListComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  ngOnChanges() {
+    console.log('ngOnChanges');
   }
 
+  ngDoCheck(): void {
+    console.log('ngDoCheck')
+  }
+
+  deleteCourse(courseId: number, id: number) {
+    console.log('delete course id ', courseId);
+    this.courseList.splice(id, 1);
+  }
+
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy')
+  }
 }
