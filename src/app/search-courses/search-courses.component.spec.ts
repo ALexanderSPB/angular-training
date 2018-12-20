@@ -24,4 +24,10 @@ describe('SearchCoursesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should search', () => {
+    spyOn(console, 'log');
+    component.onFindClick();
+    expect(console.log).toHaveBeenCalledWith('find');
+  })
 });
