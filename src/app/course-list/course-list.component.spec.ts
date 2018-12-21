@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CourseListComponent } from "./course-list.component";
-import { SearchCoursesComponent } from "../search-courses/search-courses.component";
-import { CourseItemComponent } from "../course-item/course-item.component";
-import { FormsModule } from "@angular/forms";
+import { CourseListComponent } from './course-list.component';
+import { SearchCoursesComponent } from '../search-courses/search-courses.component';
+import { CourseItemComponent } from '../course-item/course-item.component';
+import { FormsModule } from '@angular/forms';
 
 describe('CourseListComponent', () => {
   let component: CourseListComponent;
@@ -19,7 +19,7 @@ describe('CourseListComponent', () => {
         FormsModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -57,5 +57,5 @@ describe('CourseListComponent', () => {
     component.deleteCourse(0, 0);
     fixture.detectChanges();
     expect(component.courseList).toEqual([]);
-  })
+  });
 });

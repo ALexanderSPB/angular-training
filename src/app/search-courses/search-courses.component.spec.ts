@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchCoursesComponent } from './search-courses.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 
 describe('SearchCoursesComponent', () => {
   let component: SearchCoursesComponent;
@@ -9,10 +9,10 @@ describe('SearchCoursesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchCoursesComponent ],
-      imports: [ FormsModule ]
+      declarations: [SearchCoursesComponent],
+      imports: [FormsModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -29,5 +29,5 @@ describe('SearchCoursesComponent', () => {
     spyOn(console, 'log');
     component.onFindClick();
     expect(console.log).toHaveBeenCalledWith('find');
-  })
+  });
 });

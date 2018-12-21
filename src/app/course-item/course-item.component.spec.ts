@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CourseItemComponent } from './course-item.component';
-import {Component, NO_ERRORS_SCHEMA} from "@angular/core";
-import {Course} from "../course.model";
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Course } from '../course.model';
 
 describe('CourseItemComponent', () => {
   let component: CourseItemComponent;
@@ -10,9 +10,9 @@ describe('CourseItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseItemComponent ]
+      declarations: [CourseItemComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe('CourseItemComponent', () => {
     component.course = {
       title: '1',
       date: new Date(),
-      description: "",
+      description: '',
       duration: 0,
       id: 0
     };
@@ -35,7 +35,7 @@ describe('CourseItemComponent', () => {
 
 @Component({
   template: `
-    <app-course-item 
+    <app-course-item
       [course]="course"
       (onDeleteClick)="onDelete($event)"
     ></app-course-item>`
@@ -44,10 +44,11 @@ class TestHostComponent {
   public course: Course = {
     title: '1',
     date: new Date(),
-    description: "1",
+    description: '1',
     duration: 0,
     id: 0
   };
+
   public onDelete() {
   }
 }
@@ -76,5 +77,5 @@ describe('courseItem testHostComponent', () => {
     deleteBtn.click();
     fixture.detectChanges();
     expect(component.onDelete).toHaveBeenCalled();
-  })
+  });
 });
