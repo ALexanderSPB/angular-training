@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnChanges, OnDestroy, OnInit} from '@angular/core';
+import { Component, DoCheck, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Course } from '../course.model';
 
 @Component({
