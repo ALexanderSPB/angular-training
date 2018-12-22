@@ -1,7 +1,12 @@
 .searchCourses {
   display: flex;
   justify-content: space-between;
-  padding: 0.5em;
+  padding: 1em;
   margin: 0.5em;
   border: #cccccc solid 1px;
+  .search input{
+    margin: 0;
+  }
+  .search button {
+  }
 }

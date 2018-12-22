@@ -3,6 +3,10 @@ import { CourseListComponent } from './course-list.component';
 import { SearchCoursesComponent } from '../search-courses/search-courses.component';
 import { CourseItemComponent } from '../course-item/course-item.component';
 import { FormsModule } from '@angular/forms';
+import { HighlightDirective } from "../highlight.directive";
+import { OrderByPipe } from "../order-by.pipe";
+import { DurationPipe } from "../duration.pipe";
+import { NameFilterPipe } from "../name-filter.pipe";
 
 describe('CourseListComponent', () => {
   let component: CourseListComponent;
@@ -13,10 +17,16 @@ describe('CourseListComponent', () => {
       declarations: [
         CourseListComponent,
         SearchCoursesComponent,
-        CourseItemComponent
+        CourseItemComponent,
+        HighlightDirective,
+        OrderByPipe,
+        DurationPipe
       ],
       imports: [
         FormsModule
+      ],
+      providers: [
+        NameFilterPipe
       ]
     })
       .compileComponents();

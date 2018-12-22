@@ -1,10 +1,14 @@
 <div class="courseList">
-  <app-search-courses></app-search-courses>
+  <app-search-courses (onFind)="filterCourseList($event)"></app-search-courses>
   <app-course-item
-    *ngFor="let course of courseList; let index = index"
+    *ngFor="let course of courseList | orderBy; let index = index"
     [course]="course"
+    [appHighlight]="course.creationDate"
     (onDeleteClick)="deleteCourse(course.id, index)"
   ></app-course-item>
+  <div *ngIf="!courseList.length" class="noData">
+    No data, feel free to add new courses
+  </div>
   <button class="load-btn" (click)="onLoadMoreClick()">
     Load more
   </button>

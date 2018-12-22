@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CourseItemComponent } from './course-item.component';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { Course } from '../course.model';
+import { DurationPipe } from "../duration.pipe";
 
 describe('CourseItemComponent', () => {
   let component: CourseItemComponent;
@@ -10,7 +11,7 @@ describe('CourseItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CourseItemComponent]
+      declarations: [CourseItemComponent, DurationPipe],
     })
       .compileComponents();
   }));
@@ -20,10 +21,11 @@ describe('CourseItemComponent', () => {
     component = fixture.componentInstance;
     component.course = {
       title: '1',
-      date: new Date(),
+      creationDate: new Date(),
       description: '',
       duration: 0,
-      id: 0
+      id: 0,
+      topRated: true
     };
     fixture.detectChanges();
   });
@@ -43,10 +45,11 @@ describe('CourseItemComponent', () => {
 class TestHostComponent {
   public course: Course = {
     title: '1',
-    date: new Date(),
+    creationDate: new Date(),
     description: '1',
     duration: 0,
-    id: 0
+    id: 0,
+    topRated: true
   };
 
   public onDelete() {
@@ -57,7 +60,7 @@ describe('courseItem testHostComponent', () => {
   let fixture, component, nativeElement;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestHostComponent, CourseItemComponent],
+      declarations: [TestHostComponent, CourseItemComponent, DurationPipe],
       schemas: [NO_ERRORS_SCHEMA]
     });
     fixture = TestBed.createComponent(TestHostComponent);
