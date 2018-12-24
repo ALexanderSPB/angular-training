@@ -59,9 +59,10 @@ describe('CourseListComponent', () => {
       {
         id: 0,
         title: `title${0}`,
-        date: new Date(),
+        creationDate: new Date(),
         duration: 100,
-        description: `Course description`
+        description: `Course description`,
+        topRated: true
       }
     ];
     component.deleteCourse(0, 0);
