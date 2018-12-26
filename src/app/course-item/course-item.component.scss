@@ -4,4 +4,17 @@
   border: #cccccc solid 1px;
   padding: 0.5em;
   margin: 0.5em;
+
+  .info {
+    flex: 2;
+    padding-right: 15px;
+    .title-container {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .duration {
+    margin-right: 2em;
+  }
 }

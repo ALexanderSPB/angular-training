@@ -1,15 +1,17 @@
 export interface CourseModel {
   id: number,
   title: string,
-  date: Date,
+  creationDate: Date,
   duration: number,
-  description: string
+  description: string,
+  topRated: boolean
 }
 
 export class Course implements CourseModel {
   id: number;
   title: string;
-  date: Date;
+  creationDate: Date;
   duration: number;
   description: string;
+  topRated: boolean;
 }

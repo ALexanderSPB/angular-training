@@ -1,8 +1,15 @@
 <div class="course">
   <div class="info">
-    {{course.title}}
-    {{course.duration}}
-    {{course.date}}
+    <div class="title-container">
+      <div>
+        {{course.title | uppercase}}
+        <i class="icon-star" *ngIf="course.topRated"></i>
+      </div>
+      <div>
+        <span class="duration">{{course.duration | duration}}</span>
+        <span class="creationDate"> {{course.creationDate | date: 'MM.dd.yyyy'}}</span>
+      </div>
+    </div>
     <p>
       {{course.description}}
     </p>
