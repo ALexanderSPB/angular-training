@@ -1,6 +1,7 @@
 import { Component, DoCheck, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Course } from '../course.model';
 import { NameFilterPipe } from "../name-filter.pipe";
+import { CourseService } from '../course.service';
 
 @Component({
   selector: 'app-course-list',
@@ -9,36 +10,14 @@ import { NameFilterPipe } from "../name-filter.pipe";
 })
 export class CourseListComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
   courseList: Course[] = [];
-  allCourses: Course[];
   onLoadMoreClick() {
     console.log('load more');
   };
-  constructor(private nameFilter: NameFilterPipe) {}
+  constructor(private nameFilter: NameFilterPipe, private courseService: CourseService) {}
 
   ngOnInit() {
     console.log('ngOnInit');
-    for (let i = 0; i < 10; i++) {
-      this.courseList.push({
-        id: i,
-        title: `title${i}`,
-        creationDate: new Date(),
-        duration: 100 + i,
-        description: `Course description ${i}`,
-        topRated: true
-      })
-    }
-    this.courseList[1].creationDate = new Date(2019, 6);
-    this.courseList[1].topRated = false;
-    this.courseList[2].creationDate = new Date(2017, 6);
-    this.courseList[3].topRated = false;
-    this.courseList[3].creationDate = new Date(2017, 6);
-    this.courseList[4].creationDate = new Date(2019, 6);
-    this.courseList[5].creationDate = new Date(2019, 6);
-    this.courseList[6].creationDate = new Date(2015, 6);
-    this.courseList[7].creationDate = new Date(2016, 6);
-    this.courseList[8].creationDate = new Date(2016, 2);
-
-    this.allCourses = Array.from(this.courseList)
+    this.courseList = this.courseService.getList();
   }
 
   ngOnChanges() {
@@ -51,7 +30,7 @@ export class CourseListComponent implements OnInit, OnChanges, DoCheck, OnDestro
 
   deleteCourse(courseId: number, id: number) {
     console.log('delete course id ', courseId);
-    this.courseList.splice(id, 1);
+    this.courseService.removeItem(courseId);
   }
 
   ngOnDestroy(): void {
@@ -59,11 +38,7 @@ export class CourseListComponent implements OnInit, OnChanges, DoCheck, OnDestro
   }
 
   filterCourseList(courseName: string) {
-    console.log(courseName);
-    if (!courseName) {
-      this.courseList = Array.from(this.allCourses);
-      return;
-    }
-    this.courseList = this.nameFilter.transform(this.allCourses, courseName);
+    this.courseService.filterCourseList(courseName);
+    this.courseList = this.courseService.getList();
   }
 }
