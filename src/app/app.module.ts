@@ -14,6 +14,7 @@ import { HighlightDirective } from './highlight.directive';
 import { DurationPipe } from './duration.pipe';
 import { OrderByPipe } from './order-by.pipe';
 import { NameFilterPipe } from './name-filter.pipe';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NameFilterPipe } from './name-filter.pipe';
     HighlightDirective,
     DurationPipe,
     OrderByPipe,
-    NameFilterPipe
+    NameFilterPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
