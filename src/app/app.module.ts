@@ -15,6 +15,7 @@ import { DurationPipe } from './duration.pipe';
 import { OrderByPipe } from './order-by.pipe';
 import { NameFilterPipe } from './name-filter.pipe';
 import { LoginComponent } from './login/login.component';
+import { CoursePageComponent } from './course-page/course-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LoginComponent } from './login/login.component';
     DurationPipe,
     OrderByPipe,
     NameFilterPipe,
-    LoginComponent
+    LoginComponent,
+    CoursePageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-courses',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./search-courses.component.scss']
 })
 export class SearchCoursesComponent implements OnInit {
-  private query: string;
+  public query: string;
   @Output() onFind: EventEmitter<string> = new EventEmitter<string>();
 
   onFindClick() {
@@ -14,9 +15,12 @@ export class SearchCoursesComponent implements OnInit {
     console.log('find')
   }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  onClickAddCourse() {
+    this.router.navigate(['course', { course: {} }]);
+  }
 }
