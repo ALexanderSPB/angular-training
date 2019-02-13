@@ -5,7 +5,8 @@
     Logo
   </div>
   <div>
-    <button (click)="login('1', '2')">User Login</button>
-    <button (click)="logout()">Log out</button>
+    <button *ngIf="!authService.isAuthentificated()" (click)="login('1', 'User #1')">User Login</button>
+    <span *ngIf="authService.isAuthentificated()">User Info: {{authService.getUserInfo()}}</span>
+    <button class="logoutBtn" (click)="logout()">Log out</button>
   </div>
 </nav>

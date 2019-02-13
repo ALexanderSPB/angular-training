@@ -1,12 +1,12 @@
 <div class="coursePage">
   <label for="title">Title</label>
-  <input id="title" [(ngModel)]="title">
+  <input id="title" [(ngModel)]="course.title">
   <label for="description">Description</label>
-  <input id="description" [(ngModel)]="description">
+  <input id="description" [(ngModel)]="course.description">
   <label for="date">Date</label>
-  <input id="date" [(ngModel)]="date">
+  <input id="date" [ngModel]="courseDate | date:'yyyy-MM-dd'" (ngModelChange)="courseDate = $event" type="date">
   <label for="duration">Duration</label>
-  <input id="duration" [(ngModel)]="duration"> <span>{{duration | duration}}</span>
+  <input id="duration" [(ngModel)]="course.duration"> <span>{{course.duration | duration}}</span>
   <label for="authors">Authors</label>
   <input id="authors" [(ngModel)]="authors">
   <div>

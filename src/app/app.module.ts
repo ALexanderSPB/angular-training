@@ -16,6 +16,7 @@ import { OrderByPipe } from './order-by.pipe';
 import { NameFilterPipe } from './name-filter.pipe';
 import { LoginComponent } from './login/login.component';
 import { CoursePageComponent } from './course-page/course-page.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CoursePageComponent } from './course-page/course-page.component';
     OrderByPipe,
     NameFilterPipe,
     LoginComponent,
-    CoursePageComponent
+    CoursePageComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
