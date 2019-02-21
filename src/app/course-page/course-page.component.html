@@ -1,0 +1,16 @@
+<div class="coursePage">
+  <label for="title">Title</label>
+  <input id="title" [(ngModel)]="title">
+  <label for="description">Description</label>
+  <input id="description" [(ngModel)]="description">
+  <label for="date">Date</label>
+  <input id="date" [(ngModel)]="date">
+  <label for="duration">Duration</label>
+  <input id="duration" [(ngModel)]="duration"> <span>{{duration | duration}}</span>
+  <label for="authors">Authors</label>
+  <input id="authors" [(ngModel)]="authors">
+  <div>
+    <button (click)="onClickSave()">Save</button>
+    <button (click)="onClickBack()">Back</button>
+  </div>
+</div>
