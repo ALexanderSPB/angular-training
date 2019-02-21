@@ -39,6 +39,7 @@ export class CourseService {
   }
 
   createCourse(course: Course) {
+    course.id = this.courseList.length;
     return this.courseList.push(course);
   }
 

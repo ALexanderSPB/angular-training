@@ -17,10 +17,5 @@ export class SearchCoursesComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
-
-  onClickAddCourse() {
-    this.router.navigate(['course', { course: {} }]);
-  }
+  ngOnInit() { }
 }
