@@ -8,14 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  public email: string = '';
+  public password: string = '';
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  login(token, loginInfo) {
-    this.authService.login(token, loginInfo);
+  login() {
+    const loginInfo = `User - ${this.email}`;
+    this.authService.login(this.email, loginInfo);
     this.router.navigate(['courses']);
   };
 }

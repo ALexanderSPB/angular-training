@@ -19,9 +19,13 @@ export class AuthService {
 
   isAuthentificated() {
     return !!window.localStorage.getItem('token');
-  }
+  };
 
   getUserInfo() {
     return window.localStorage.getItem('loginInfo');
+  };
+
+  getUserToken() {
+    return window.localStorage.getItem('token');
   }
 }

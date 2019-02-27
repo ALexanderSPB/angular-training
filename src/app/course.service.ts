@@ -1,46 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Course } from './course.model';
 import { NameFilterPipe } from './name-filter.pipe';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
   public courseList: Course[] = [];
-  allCourses: Course[];
+  BASE_URL: string = 'http://localhost:3000/courses';
 
-  constructor(private nameFilter: NameFilterPipe) {
-    for (let i = 0; i < 10; i++) {
-      this.courseList.push({
-        id: i,
-        title: `title${i}`,
-        creationDate: new Date(),
-        duration: 100 + i,
-        description: `Course description ${i}`,
-        topRated: true
-      })
-    }
-    this.courseList[1].creationDate = new Date(2019, 6);
-    this.courseList[1].topRated = false;
-    this.courseList[2].creationDate = new Date(2017, 6);
-    this.courseList[3].topRated = false;
-    this.courseList[3].creationDate = new Date(2017, 6);
-    this.courseList[4].creationDate = new Date(2019, 6);
-    this.courseList[5].creationDate = new Date(2019, 6);
-    this.courseList[6].creationDate = new Date(2015, 6);
-    this.courseList[7].creationDate = new Date(2016, 6);
-    this.courseList[8].creationDate = new Date(2016, 2);
+  constructor(private nameFilter: NameFilterPipe, private http: HttpClient) {}
 
-    this.allCourses = Array.from(this.courseList);
-  }
-
-  getList() {
-    return this.courseList;
+  getList(page: number, limit: number) {
+    return this.http.get<Course[]>(`${this.BASE_URL}`, {
+      params: {
+        _page: page.toString(),
+        _limit: limit.toString()
+      },
+    });
   }
 
   createCourse(course: Course) {
-    course.id = this.courseList.length;
-    return this.courseList.push(course);
+    return this.http.post(`${this.BASE_URL}`, course)
   }
 
   getItemById(id: number) {
@@ -57,16 +39,15 @@ export class CourseService {
     if (!answer) {
       return;
     }
-    const index = this.courseList.findIndex(course => course.id === id);
-    this.courseList.splice(index, 1);
+    return this.http.delete(`${this.BASE_URL}/${id}`);
   };
 
   filterCourseList(courseName: string) {
     console.log(courseName);
-    if (!courseName) {
-      this.courseList = Array.from(this.allCourses);
-      return;
-    }
-    this.courseList = this.nameFilter.transform(this.allCourses, courseName);
+    return this.http.get(`${this.BASE_URL}`, {
+      params: {
+        q: courseName
+      }
+    })
   }
 }

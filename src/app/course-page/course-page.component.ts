@@ -1,10 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Course } from '../course.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators'
 import { CourseService } from '../course.service';
-import { root } from 'rxjs/internal-compatibility';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -48,7 +45,10 @@ export class CoursePageComponent implements OnInit {
 
   onClickSave() {
     if (this.creatingCourse) {
-      this.courseService.createCourse(this.course);
+      const course: any = {...this.course};
+      const datePipe = new DatePipe('en-US');
+      course.creationDate = datePipe.transform(course.creationDate,'MM.dd.yy');
+      this.courseService.createCourse(course).subscribe(res => console.log(res));
     } else {
       this.courseService.updateItem(this.course.id, this.course);
     }
