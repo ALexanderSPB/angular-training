@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Observable, from, Subject, timer } from 'rxjs';
+import { debounce } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-courses',
@@ -7,15 +8,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./search-courses.component.scss']
 })
 export class SearchCoursesComponent implements OnInit {
-  public query: string;
   @Output() onFind: EventEmitter<string> = new EventEmitter<string>();
+  obs: Subject<string>;
 
-  onFindClick() {
-    this.onFind.emit(this.query);
-    console.log('find')
+  onChange(event) {
+    console.log(event);
+    this.obs.next(event);
+    console.log('find');
+
   }
 
-  constructor(private router: Router) { }
+  constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.obs = new Subject();
+    this.obs
+      .pipe(
+        debounce(() => timer(1000))
+      )
+      .subscribe(value => {
+        if (value.length < 3) {
+          return;
+        }
+        this.onFind.emit(value);
+      });
+  }
 }

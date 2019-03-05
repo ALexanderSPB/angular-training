@@ -8,10 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  userInfo: string;
 
   constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    this.authService.getObservable()
+      .subscribe(value => {
+        this.userInfo = value
+      })
   }
 
   logout() {

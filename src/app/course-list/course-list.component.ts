@@ -2,6 +2,7 @@ import { Component, DoCheck, OnChanges, OnDestroy, OnInit } from '@angular/core'
 import { Course } from '../course.model';
 import { NameFilterPipe } from "../name-filter.pipe";
 import { CourseService } from '../course.service';
+import { LoaderService } from '../loader.service';
 
 @Component({
   selector: 'app-course-list',
@@ -18,7 +19,8 @@ export class CourseListComponent implements OnInit, OnChanges, DoCheck, OnDestro
     this.searchCourses();
     console.log('load more');
   };
-  constructor(private nameFilter: NameFilterPipe, private courseService: CourseService) {}
+  constructor(private nameFilter: NameFilterPipe, private courseService: CourseService,
+              private loaderService: LoaderService) {}
 
   ngOnInit() {
     console.log('ngOnInit');
@@ -38,13 +40,15 @@ export class CourseListComponent implements OnInit, OnChanges, DoCheck, OnDestro
     this.courseService.getList(page, limit).subscribe(courseList => {
       courseList.forEach(course => course.creationDate = new Date(course.creationDate));
       this.courseList = courseList;
+
+      this.loaderService.hideLoader();
     });
   }
 
   deleteCourse(courseId: number) {
-    console.log('delete course id ', courseId);
     this.courseService.removeItem(courseId).subscribe(res => {
       this.searchCourses();
+      this.loaderService.hideLoader();
     });
   }
 
@@ -56,6 +60,7 @@ export class CourseListComponent implements OnInit, OnChanges, DoCheck, OnDestro
     this.courseService.filterCourseList(courseName).subscribe((courseList: Course[]) => {
       courseList.forEach(course => course.creationDate = new Date(course.creationDate));
       this.courseList = courseList;
+      this.loaderService.hideLoader();
     });
   }
 }

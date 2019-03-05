@@ -19,6 +19,8 @@ import { CoursePageComponent } from './course-page/course-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+import { LoadingBlockComponent } from './loading-block/loading-block.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -35,13 +37,15 @@ import { AuthInterceptor } from './auth.interceptor';
     NameFilterPipe,
     LoginComponent,
     CoursePageComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoadingBlockComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [
     NameFilterPipe,
