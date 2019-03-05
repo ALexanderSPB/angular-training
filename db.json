@@ -1,0 +1,90 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "title-1",
+      "creationDate": "02.25.19",
+      "duration": 100,
+      "description": "Course description 1",
+      "topRated": false
+    },
+    {
+      "id": 2,
+      "title": "title-2",
+      "creationDate": "01.01.19",
+      "duration": 100,
+      "description": "Course description 2",
+      "topRated": true
+    },
+    {
+      "id": 3,
+      "title": "title-3",
+      "creationDate": "02.25.19",
+      "duration": 100,
+      "description": "Course description 3",
+      "topRated": false
+    },
+    {
+      "id": 4,
+      "title": "title-4",
+      "creationDate": "02.25.19",
+      "duration": 100,
+      "description": "Course description 4",
+      "topRated": true
+    },
+    {
+      "id": 5,
+      "title": "title-5",
+      "creationDate": "02.25.19",
+      "duration": 100,
+      "description": "Course description 5",
+      "topRated": true
+    },
+    {
+      "id": 6,
+      "title": "title-6",
+      "creationDate": "02.25.19",
+      "duration": 100,
+      "description": "Course description 6",
+      "topRated": true
+    },
+    {
+      "id": 7,
+      "title": "title-7",
+      "creationDate": "02.25.19",
+      "duration": 100,
+      "description": "Course description 7",
+      "topRated": true
+    },
+    {
+      "id": 8,
+      "title": "title-8",
+      "creationDate": "02.25.19",
+      "duration": 100,
+      "description": "Course description 8",
+      "topRated": true
+    },
+    {
+      "id": 9,
+      "title": "title-9",
+      "creationDate": "02.25.19",
+      "duration": 100,
+      "description": "Course description 9",
+      "topRated": true
+    },
+    {
+      "title": "12312",
+      "description": "йувйы",
+      "creationDate": "03-02-19",
+      "duration": "21",
+      "id": 10
+    },
+    {
+      "description": "йцу",
+      "title": "йцу",
+      "creationDate": "02.15.19",
+      "duration": "21",
+      "id": 11
+    }
+  ]
+}

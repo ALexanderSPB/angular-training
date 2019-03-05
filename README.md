@@ -1,10 +1,15 @@
-# Task1
+# Angular training
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
 
-## Development server
+##Getting started
+- Install JSON Server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+  `npm install -g json-server`
+
+## Development server
+1. Run `json-server --watch db.json`
+2. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 

@@ -10,14 +10,19 @@ import { CourseService } from '../course.service';
 })
 export class CourseListComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
   courseList: Course[] = [];
+  limit = 3;
+  page = 1;
+
   onLoadMoreClick() {
+    this.limit++;
+    this.searchCourses();
     console.log('load more');
   };
   constructor(private nameFilter: NameFilterPipe, private courseService: CourseService) {}
 
   ngOnInit() {
     console.log('ngOnInit');
-    this.courseList = this.courseService.getList();
+    this.searchCourses();
   }
 
   ngOnChanges() {
@@ -28,9 +33,19 @@ export class CourseListComponent implements OnInit, OnChanges, DoCheck, OnDestro
     console.log('ngDoCheck')
   }
 
-  deleteCourse(courseId: number, id: number) {
+  searchCourses() {
+    const { page, limit } = this;
+    this.courseService.getList(page, limit).subscribe(courseList => {
+      courseList.forEach(course => course.creationDate = new Date(course.creationDate));
+      this.courseList = courseList;
+    });
+  }
+
+  deleteCourse(courseId: number) {
     console.log('delete course id ', courseId);
-    this.courseService.removeItem(courseId);
+    this.courseService.removeItem(courseId).subscribe(res => {
+      this.searchCourses();
+    });
   }
 
   ngOnDestroy(): void {
@@ -38,7 +53,9 @@ export class CourseListComponent implements OnInit, OnChanges, DoCheck, OnDestro
   }
 
   filterCourseList(courseName: string) {
-    this.courseService.filterCourseList(courseName);
-    this.courseList = this.courseService.getList();
+    this.courseService.filterCourseList(courseName).subscribe((courseList: Course[]) => {
+      courseList.forEach(course => course.creationDate = new Date(course.creationDate));
+      this.courseList = courseList;
+    });
   }
 }
