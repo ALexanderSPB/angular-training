@@ -17,8 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const loginInfo = `User - ${this.email}`;
-    this.authService.login(this.email, loginInfo);
+    this.authService.login(this.email, this.password);
     this.router.navigate(['courses']);
   };
 }

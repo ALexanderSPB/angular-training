@@ -4,7 +4,7 @@
       "id": 1,
       "title": "title-1",
       "creationDate": "02.25.19",
-      "duration": 100,
+      "duration": "1001288",
       "description": "Course description 1",
       "topRated": false
     },
@@ -12,7 +12,7 @@
       "id": 2,
       "title": "title-2",
       "creationDate": "01.01.19",
-      "duration": "101",
+      "duration": "1012",
       "description": "Course description 2",
       "topRated": true
     },
@@ -20,7 +20,7 @@
       "id": 3,
       "title": "title-3",
       "creationDate": "02.25.19",
-      "duration": 100,
+      "duration": "1221",
       "description": "Course description 3",
       "topRated": false
     },

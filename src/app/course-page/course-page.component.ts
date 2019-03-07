@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from '../course.service';
 import { DatePipe } from '@angular/common';
 import { LoaderService } from '../loader.service';
+import { Store } from '@ngrx/store';
+import { CreatedCourse, UpdatedCourse } from '../reducers/courses.actions';
 
 @Component({
   selector: 'app-course-page',
@@ -17,7 +19,7 @@ export class CoursePageComponent implements OnInit {
   private creatingCourse: boolean;
 
   constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService,
-              private loaderService: LoaderService) {  }
+              private loaderService: LoaderService, private store: Store<Course[]>) {  }
 
   ngOnInit() {
     this.route.params.subscribe( data => {
@@ -56,10 +58,13 @@ export class CoursePageComponent implements OnInit {
       const datePipe = new DatePipe('en-US');
       course.creationDate = datePipe.transform(course.creationDate,'MM.dd.yy');
       this.courseService.createCourse(course).subscribe(() => {
+        this.store.dispatch(new CreatedCourse(course));
         this.loaderService.hideLoader();
       });
     } else {
       this.courseService.updateItem(this.course.id, this.course).subscribe(() => {
+        const { id } = this.course;
+        this.store.dispatch(new UpdatedCourse({course: this.course, id}));
         this.loaderService.hideLoader();
       });
     }
