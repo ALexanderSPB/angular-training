@@ -1,16 +1,46 @@
 <form class="coursePage" [formGroup]="courseForm">
   <label for="title">Title</label>
+  <p *ngIf="courseForm.get('title').hasError('required') && courseForm.get('title').touched">Title is required</p>
   <input id="title" formControlName="title">
   <label for="description">Description</label>
+  <p *ngIf="courseForm.get('description').hasError('required')
+    && courseForm.get('description').touched">
+    Description is required
+  </p>
   <input id="description" formControlName="description">
   <label for="date">Date</label>
+  <p *ngIf="courseForm.get('creationDate').hasError('required')
+    && courseForm.get('creationDate').touched">
+    Date is required
+  </p>
   <input id="date" formControlName="creationDate" type="date">
   <label for="duration">Duration</label>
+  <p *ngIf="courseForm.get('duration').hasError('required')
+    && courseForm.get('duration').touched">
+    Duration is required
+  </p>
   <input id="duration" formControlName="duration"> <span>{{course.duration | duration}}</span>
-  <label for="authors">Authors</label>
-  <input id="authors" formControlName="authors">
+  <label>Authors</label>
+  <p *ngIf="courseForm.get('authors').hasError('required')
+    && courseForm.get('authors').touched">
+    At least 1 author is required
+  </p>
+  <div
+    formArrayName="authors"
+    *ngFor="let author of authors.controls; let i = index"
+  >
+    <label>Author</label>
+    <mat-form-field>
+      <input type="text" matInput [formControlName]="i" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredAuthor | async" [value]="option.name">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
   <div>
-    <button (click)="onClickSave()">Save</button>
+    <button [disabled]="!courseForm.valid" (click)="onClickSave()">Save</button>
     <button (click)="onClickBack()">Back</button>
   </div>
 </form>

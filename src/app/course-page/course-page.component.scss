@@ -1,3 +1,13 @@
 .coursePage {
   margin: 2em;
 }
+button:disabled {
+  cursor: not-allowed;
+}
+p {
+  color: red;
+}
+
+input.ng-touched.ng-invalid {
+  border: solid 1px red;
+}
