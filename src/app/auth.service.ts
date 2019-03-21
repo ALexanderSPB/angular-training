@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { State } from './reducers/auth.reducer';
+import { Login, Logout } from './reducers/auth.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -7,18 +10,21 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class AuthService {
   userInfoObs: BehaviorSubject<string>;
 
-  constructor() {
+  constructor(private store: Store<State>) {
   }
 
-  login(token: string, loginInfo: string) {
+  login(loginName: string, password: string) {
+    const loginInfo = `User - ${loginName}`;
     window.localStorage.setItem('loginInfo', loginInfo);
-    window.localStorage.setItem('token', token);
-    this.userInfoObs.next(loginInfo)
+    window.localStorage.setItem('token', loginName);
+    this.userInfoObs.next(loginInfo);
+    this.store.dispatch(new Login({userName: loginInfo, password}));
   };
 
   logout() {
     window.localStorage.removeItem('loginInfo');
     window.localStorage.removeItem('token');
+    this.store.dispatch(new Logout);
   };
 
   isAuthentificated() {
@@ -36,6 +42,7 @@ export class AuthService {
   getObservable() {
     const userInfo = this.getUserInfo();
     this.userInfoObs = new BehaviorSubject(userInfo);
+    this.store.dispatch(new Login({userName: userInfo, password: 'password'}));
     return this.userInfoObs;
   }
 }
