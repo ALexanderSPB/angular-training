@@ -6,15 +6,17 @@
       "creationDate": "02.25.19",
       "duration": "1001288",
       "description": "Course description 1",
-      "topRated": false
+      "topRated": false,
+      "authors": ""
     },
     {
       "id": 2,
       "title": "title-2",
-      "creationDate": "01.01.19",
+      "creationDate": "03.17.19",
       "duration": "1012",
       "description": "Course description 2",
-      "topRated": true
+      "topRated": true,
+      "authors": "12"
     },
     {
       "id": 3,
@@ -92,6 +94,14 @@
       "duration": "33",
       "creationDate": "03.01.19",
       "id": 12
+    },
+    {
+      "title": "zzzz",
+      "description": "zzzz",
+      "creationDate": "03.07.19",
+      "duration": "1111",
+      "authors": "zzzz",
+      "id": 13
     }
   ]
 }

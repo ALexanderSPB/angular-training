@@ -9,7 +9,7 @@ import { HeadlineComponent } from './headline/headline.component';
 import { CourseListComponent } from './course-list/course-list.component';
 import { CourseItemComponent } from './course-item/course-item.component';
 import { SearchCoursesComponent } from './search-courses/search-courses.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HighlightDirective } from './highlight.directive';
 import { DurationPipe } from './duration.pipe';
 import { OrderByPipe } from './order-by.pipe';
@@ -48,6 +48,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgxSpinnerModule,
     StoreModule.forRoot(reducers, { metaReducers }),

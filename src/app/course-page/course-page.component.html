@@ -1,16 +1,16 @@
-<div class="coursePage">
+<form class="coursePage" [formGroup]="courseForm">
   <label for="title">Title</label>
-  <input id="title" [(ngModel)]="course.title">
+  <input id="title" formControlName="title">
   <label for="description">Description</label>
-  <input id="description" [(ngModel)]="course.description">
+  <input id="description" formControlName="description">
   <label for="date">Date</label>
-  <input id="date" [ngModel]="courseDate | date:'yyyy-MM-dd'" (ngModelChange)="courseDate = $event" type="date">
+  <input id="date" formControlName="creationDate" type="date">
   <label for="duration">Duration</label>
-  <input id="duration" [(ngModel)]="course.duration"> <span>{{course.duration | duration}}</span>
+  <input id="duration" formControlName="duration"> <span>{{course.duration | duration}}</span>
   <label for="authors">Authors</label>
-  <input id="authors" [(ngModel)]="authors">
+  <input id="authors" formControlName="authors">
   <div>
     <button (click)="onClickSave()">Save</button>
     <button (click)="onClickBack()">Back</button>
   </div>
-</div>
+</form>
