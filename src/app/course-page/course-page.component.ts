@@ -3,6 +3,7 @@ import { Course } from '../course.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from '../course.service';
 import { DatePipe } from '@angular/common';
+import { LoaderService } from '../loader.service';
 
 @Component({
   selector: 'app-course-page',
@@ -15,7 +16,8 @@ export class CoursePageComponent implements OnInit {
   public authors = '';
   private creatingCourse: boolean;
 
-  constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService) {  }
+  constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService,
+              private loaderService: LoaderService) {  }
 
   ngOnInit() {
     this.route.params.subscribe( data => {
@@ -24,13 +26,18 @@ export class CoursePageComponent implements OnInit {
         this.creatingCourse = true;
         return;
       }
-      const course = this.courseService.getItemById(+id);
-      if (!course) {
-        this.router.navigate(['404NotFound']);
-        return;
-      } else {
-        this.course = course;
-      }
+      this.courseService.getItemById(+id)
+        .subscribe(value => {
+          this.loaderService.hideLoader();
+          const course = value;
+          if (!course) {
+            this.router.navigate(['404NotFound']);
+            return;
+          } else {
+            this.course = course;
+          }
+        });
+
     });
   }
 
@@ -48,9 +55,13 @@ export class CoursePageComponent implements OnInit {
       const course: any = {...this.course};
       const datePipe = new DatePipe('en-US');
       course.creationDate = datePipe.transform(course.creationDate,'MM.dd.yy');
-      this.courseService.createCourse(course).subscribe(res => console.log(res));
+      this.courseService.createCourse(course).subscribe(() => {
+        this.loaderService.hideLoader();
+      });
     } else {
-      this.courseService.updateItem(this.course.id, this.course);
+      this.courseService.updateItem(this.course.id, this.course).subscribe(() => {
+        this.loaderService.hideLoader();
+      });
     }
     this.router.navigate(['courses']);
   }

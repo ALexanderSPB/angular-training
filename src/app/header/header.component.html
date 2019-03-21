@@ -5,7 +5,7 @@
     Logo
   </div>
   <div *ngIf="authService.isAuthentificated()">
-    <span >User Info: {{authService.getUserInfo()}}</span>
+    <span>User Info: {{userInfo}}</span>
     <button class="logoutBtn"
             (click)="logout()">
       Log out

@@ -4,8 +4,8 @@
       type="text"
       placeholder="Name, fragment or date"
       [(ngModel)]="query"
+      (ngModelChange)="onChange($event)"
     >
-    <button (click)="onFindClick()">Search</button>
   </div>
   <button routerLink="/courses/new">Add Course</button>
 </div>

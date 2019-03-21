@@ -12,7 +12,7 @@
       "id": 2,
       "title": "title-2",
       "creationDate": "01.01.19",
-      "duration": 100,
+      "duration": "101",
       "description": "Course description 2",
       "topRated": true
     },
@@ -85,6 +85,13 @@
       "creationDate": "02.15.19",
       "duration": "21",
       "id": 11
+    },
+    {
+      "title": "dee",
+      "description": "de2",
+      "duration": "33",
+      "creationDate": "03.01.19",
+      "id": 12
     }
   ]
 }

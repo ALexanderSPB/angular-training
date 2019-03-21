@@ -19,7 +19,10 @@ export class HeadlineComponent implements OnInit {
         const index = event.url.lastIndexOf('/');
         const id = +event.url.slice(index + 1);
         if (!isNaN(id)) {
-          this.courseName = this.courseService.getItemById(id).title;
+          this.courseService.getItemById(id)
+            .subscribe(value => {
+              this.courseName = value.title;
+          });
         } else {
           this.courseName = '';
         }
