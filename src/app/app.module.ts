@@ -17,7 +17,7 @@ import { NameFilterPipe } from './name-filter.pipe';
 import { LoginComponent } from './login/login.component';
 import { CoursePageComponent } from './course-page/course-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import { LoadingBlockComponent } from './loading-block/loading-block.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -27,6 +27,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule, MatInputModule } from '@angular/material';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { createTranslateLoader } from '../translationModule';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,14 @@ import { MatAutocompleteModule, MatInputModule } from '@angular/material';
     HttpClientModule,
     NgxSpinnerModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     NameFilterPipe,

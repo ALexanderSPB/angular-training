@@ -19,8 +19,8 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class CoursePageComponent implements OnInit {
 
-  authorList: string[] = [];
-  filteredAuthor: Observable<string>;
+  authorList: any = [];
+  filteredAuthor: Observable<string[]>;
   course: Course = new Course();
 
   courseForm = new FormGroup({
