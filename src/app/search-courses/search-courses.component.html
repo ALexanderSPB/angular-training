@@ -3,8 +3,7 @@
     <input
       type="text"
       placeholder="Name, fragment or date"
-      [(ngModel)]="query"
-      (ngModelChange)="onChange($event)"
+      [formControl]="query"
     >
   </div>
   <button routerLink="/courses/new">Add Course</button>

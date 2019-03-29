@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable, from, Subject, timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search-courses',
@@ -9,14 +10,9 @@ import { debounce } from 'rxjs/operators';
 })
 export class SearchCoursesComponent implements OnInit {
   @Output() onFind: EventEmitter<string> = new EventEmitter<string>();
+
+  query = new FormControl();
   obs: Subject<string>;
-
-  onChange(event) {
-    console.log(event);
-    this.obs.next(event);
-    console.log('find');
-
-  }
 
   constructor() { }
 
@@ -32,5 +28,11 @@ export class SearchCoursesComponent implements OnInit {
         }
         this.onFind.emit(value);
       });
+
+    this.query.valueChanges.subscribe(value => {
+      console.log(value);
+      this.obs.next(value);
+      console.log('find');
+    });
   }
 }
